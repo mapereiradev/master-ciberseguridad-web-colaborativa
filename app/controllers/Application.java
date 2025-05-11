@@ -13,7 +13,7 @@ public class Application extends Controller {
 
         User u = (User) renderArgs.get("user");
         if (!u.getType().equals(Constants.User.TEACHER)){
-            return;
+            error(Constants.ACCESO_NO_AUTORIZADO,  "Sólo un profesor puede realizar la acción solicitada");
         }
     }
 
@@ -51,11 +51,13 @@ public class Application extends Controller {
 
 
     public static void setMark(String student) {
+        checkTeacher();
         User u = User.loadUser(student);
         render(u);
     }
 
     public static void doSetMark(String student, Integer mark) {
+        checkTeacher();
         User u = User.loadUser(student);
         u.setMark(mark);
         u.save();

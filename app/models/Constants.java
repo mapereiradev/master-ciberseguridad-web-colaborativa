@@ -13,6 +13,6 @@ public class Constants {
         public static final String TEACHER = "teacher";
         public static final String STUDENT = "student";
     }
-
+    public static final int ACCESO_NO_AUTORIZADO = 403;
 
 }
